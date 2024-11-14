@@ -1,0 +1,102 @@
+[
+  {
+    "first_name": "Rick",
+    "last_name": "Sanchez",
+    "mobile_number": "202-555-0164",
+    "reservation_date": "2024-11-16",
+    "reservation_time": "20:00:00",
+    "people": 6,
+    "created_at": "2020-12-10T08:30:32.326Z",
+    "updated_at": "2020-12-10T08:30:32.326Z"
+  },
+  {
+    "first_name": "Amanda",
+    "last_name": "Burhop",
+    "mobile_number": "202-555-0153",
+    "reservation_date": "2024-11-19",
+    "reservation_time": "20:00",
+    "people": 1,
+    "created_at": "2020-12-10T08:31:32.326Z",
+    "updated_at": "2020-12-10T08:31:32.326Z"
+  },
+  {
+    "first_name": "Bird",
+    "last_name": "Person",
+    "mobile_number": "808-555-0141",
+    "reservation_date": "2024-11-16",
+    "reservation_time": "18:00",
+    "people": 1,
+    "created_at": "2020-12-10T08:31:32.326Z",
+    "updated_at": "2020-12-10T08:31:32.326Z"
+  },
+  {
+    "first_name": "Tiger",
+    "last_name": "Lion",
+    "mobile_number": "808-555-0140",
+    "reservation_date": "2024-11-20",
+    "reservation_time": "18:00",
+    "people": 3,
+    "created_at": "2020-12-10T08:31:32.326Z",
+    "updated_at": "2020-12-10T08:31:32.326Z"
+  },
+  {
+    "first_name": "Anthony",
+    "last_name": "Charboneau",
+    "mobile_number": "430-888-1165",
+    "reservation_date": "2024-11-17",
+    "reservation_time": "18:00",
+    "people": 2,
+    "created_at": "2020-12-10T08:31:32.326Z",
+    "updated_at": "2020-12-10T08:31:32.326Z"
+  },
+  {
+    "first_name": "Grizzly",
+    "last_name": "Bear",
+    "mobile_number": "620-646-8897",
+    "reservation_date": "2024-11-18",
+    "reservation_time": "18:00",
+    "people": 4,
+    "created_at": "2020-12-10T08:31:32.326Z",
+    "updated_at": "2020-12-10T08:31:32.326Z"
+  },
+  {
+    "first_name": "Elon",
+    "last_name": "Musk",
+    "mobile_number": "260-112-3344",
+    "reservation_date": "2024-11-18",
+    "reservation_time": "18:00",
+    "people": 4,
+    "created_at": "2020-12-10T08:31:32.326Z",
+    "updated_at": "2020-12-10T08:31:32.326Z"
+  },
+  {
+    "first_name": "WGU",
+    "last_name": "NightOwl",
+    "mobile_number": "123-321-3210",
+    "reservation_date": "2024-11-16",
+    "reservation_time": "18:00",
+    "people": 2,
+    "created_at": "2020-12-10T08:31:32.326Z",
+    "updated_at": "2020-12-10T08:31:32.326Z"
+  },
+  {
+    "first_name": "PlayStation",
+    "last_name": "Plus",
+    "mobile_number": "098-765-4321",
+    "reservation_date": "2024-11-20",
+    "reservation_time": "18:00",
+    "people": 5,
+    "created_at": "2020-12-10T08:31:32.326Z",
+    "updated_at": "2020-12-10T08:31:32.326Z"
+  },
+  {
+    "first_name": "Xbox",
+    "last_name": "Gamepass",
+    "mobile_number": "246-810-1214",
+    "reservation_date": "2024-11-20",
+    "reservation_time": "18:00",
+    "people": 5,
+    "created_at": "2020-12-10T08:31:32.326Z",
+    "updated_at": "2020-12-10T08:31:32.326Z"
+  }
+]
