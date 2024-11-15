@@ -1,0 +1,44 @@
+[
+  {
+    "table_name": "Bar #1",
+    "capacity": 1
+  },
+  {
+    "table_name": "Bar #2",
+    "capacity": 1
+  },
+  {
+    "table_name": "Bar #3",
+    "capacity": 1
+  },
+  {
+    "table_name": "High Top #1",
+    "capacity": 2
+  },
+  {
+    "table_name": "High Top #2",
+    "capacity": 2
+  },
+  {
+    "table_name": "High Top #3",
+    "capacity": 2
+  },
+  {
+    "table_name": "Booth #1",
+    "capacity": 4
+  },
+  { "table_name": "Booth #2", "capacity": 4 },
+  {
+    "table_name": "Booth #3",
+    "capacity": 4
+  },
+  {
+    "table_name": "BoothXL #1",
+    "capacity": 6
+  },
+  {
+    "table_name": "BoothXL #2",
+    "capacity": 6
+  },
+  { "table_name": "BoothXL #3", "capacity": 6 }
+]
