@@ -48,9 +48,17 @@ const search = (mobile_number) => {
     .orderBy("reservation_date");
 };
 
+const listCompleteReservations = (reservation_date) => {
+  return knex("reservations")
+    .select("*")
+    .where({ reservation_date, status: "complete" })
+    .orderBy("reservation_time");
+};
+
 module.exports = {
   list,
   listByDate,
+  listCompleteReservations,
   create,
   read,
   update,

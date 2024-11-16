@@ -44,6 +44,13 @@ const list = async (req, res) => {
   res.json({ data });
 };
 
+const listCompleteReservations = async (req, res, next) => {
+  const { date } = req.query;
+  if (!date) return next({ status: 404, message: "No date found in query" });
+  const data = await reservationsService.listCompleteReservations(date);
+  res.status(200).json({ data });
+};
+
 ////////////////////////////
 // VALIDATION MIDDLEWARE //
 ///////////////////////////
@@ -65,6 +72,7 @@ const reservationExists = async (req, res, next) => {
 
 module.exports = {
   list: [asyncErrorBoundary(list)],
+  listCompleteReservations: [asyncErrorBoundary(listCompleteReservations)],
   create: [asyncErrorBoundary(create)],
   read: [asyncErrorBoundary(reservationExists), asyncErrorBoundary(read)],
   update: [asyncErrorBoundary(reservationExists), asyncErrorBoundary(update)],
