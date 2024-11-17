@@ -35,7 +35,7 @@ const listByDate = (reservation_date) => {
   return knex("reservations")
     .select("*")
     .where({ reservation_date })
-    .whereNot({ status: "complete" })
+    .whereNot({ status: "complete", status: "cancelled" })
     .orderBy("reservation_time");
 };
 
@@ -51,7 +51,7 @@ const search = (mobile_number) => {
 const listCompleteReservations = (reservation_date) => {
   return knex("reservations")
     .select("*")
-    .where({ reservation_date, status: "complete" })
+    .where({ reservation_date, status: "complete", status: "cancelled" })
     .orderBy("reservation_time");
 };
 
