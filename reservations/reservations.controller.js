@@ -32,12 +32,12 @@ const updateStatus = async (req, res) => {
 
 const list = async (req, res) => {
   const { date } = req.query;
-  const { mobile_number } = req.query;
+  const { last_name } = req.query;
   let data;
   if (date) {
     data = await reservationsService.listByDate(date);
-  } else if (mobile_number) {
-    data = await reservationsService.search(mobile_number);
+  } else if (last_name) {
+    data = await reservationsService.search(last_name);
   } else {
     data = await reservationsService.list();
   }
