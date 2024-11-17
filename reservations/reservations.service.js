@@ -39,12 +39,9 @@ const listByDate = (reservation_date) => {
     .orderBy("reservation_time");
 };
 
-const search = (mobile_number) => {
+const search = (last_name) => {
   return knex("reservations")
-    .whereRaw(
-      "translate(mobile_number, '() -', '') like ?",
-      `%${mobile_number.replace(/\D/g, "")}%`
-    )
+    .whereILike("last_name", `%${last_name}%`)
     .orderBy("reservation_date");
 };
 
