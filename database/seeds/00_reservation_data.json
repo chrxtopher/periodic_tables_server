@@ -7,7 +7,9 @@
     "reservation_time": "20:00",
     "people": 6,
     "created_at": "2020-12-10T08:30:32.326Z",
-    "updated_at": "2020-12-10T08:30:32.326Z"
+    "updated_at": "2020-12-10T08:30:32.326Z",
+    "birthday": false,
+    "anniversary": false
   },
   {
     "first_name": "Amanda",
@@ -17,7 +19,9 @@
     "reservation_time": "20:00",
     "people": 1,
     "created_at": "2020-12-10T08:31:32.326Z",
-    "updated_at": "2020-12-10T08:31:32.326Z"
+    "updated_at": "2020-12-10T08:31:32.326Z",
+    "birthday": false,
+    "anniversary": false
   },
   {
     "first_name": "Bird",
@@ -27,7 +31,9 @@
     "reservation_time": "16:30",
     "people": 1,
     "created_at": "2020-12-10T08:31:32.326Z",
-    "updated_at": "2020-12-10T08:31:32.326Z"
+    "updated_at": "2020-12-10T08:31:32.326Z",
+    "birthday": false,
+    "anniversary": false
   },
   {
     "first_name": "Tiger",
@@ -37,7 +43,9 @@
     "reservation_time": "14:25",
     "people": 3,
     "created_at": "2020-12-10T08:31:32.326Z",
-    "updated_at": "2020-12-10T08:31:32.326Z"
+    "updated_at": "2020-12-10T08:31:32.326Z",
+    "birthday": true,
+    "anniversary": false
   },
   {
     "first_name": "Anthony",
@@ -47,7 +55,9 @@
     "reservation_time": "11:00",
     "people": 2,
     "created_at": "2020-12-10T08:31:32.326Z",
-    "updated_at": "2020-12-10T08:31:32.326Z"
+    "updated_at": "2020-12-10T08:31:32.326Z",
+    "birthday": false,
+    "anniversary": false
   },
   {
     "first_name": "Grizzly",
@@ -57,7 +67,9 @@
     "reservation_time": "18:45",
     "people": 4,
     "created_at": "2020-12-10T08:31:32.326Z",
-    "updated_at": "2020-12-10T08:31:32.326Z"
+    "updated_at": "2020-12-10T08:31:32.326Z",
+    "birthday": false,
+    "anniversary": true
   },
   {
     "first_name": "Elon",
@@ -67,7 +79,9 @@
     "reservation_time": "19:00",
     "people": 4,
     "created_at": "2020-12-10T08:31:32.326Z",
-    "updated_at": "2020-12-10T08:31:32.326Z"
+    "updated_at": "2020-12-10T08:31:32.326Z",
+    "birthday": true,
+    "anniversary": true
   },
   {
     "first_name": "WGU",
@@ -77,7 +91,9 @@
     "reservation_time": "19:35",
     "people": 2,
     "created_at": "2020-12-10T08:31:32.326Z",
-    "updated_at": "2020-12-10T08:31:32.326Z"
+    "updated_at": "2020-12-10T08:31:32.326Z",
+    "birthday": false,
+    "anniversary": false
   },
   {
     "first_name": "PlayStation",
@@ -87,7 +103,9 @@
     "reservation_time": "16:00",
     "people": 5,
     "created_at": "2020-12-10T08:31:32.326Z",
-    "updated_at": "2020-12-10T08:31:32.326Z"
+    "updated_at": "2020-12-10T08:31:32.326Z",
+    "birthday": false,
+    "anniversary": true
   },
   {
     "first_name": "Xbox",
@@ -97,6 +115,8 @@
     "reservation_time": "12:00",
     "people": 5,
     "created_at": "2020-12-10T08:31:32.326Z",
-    "updated_at": "2020-12-10T08:31:32.326Z"
+    "updated_at": "2020-12-10T08:31:32.326Z",
+    "birthday": true,
+    "anniversary": false
   }
 ]
