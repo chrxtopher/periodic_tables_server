@@ -39,6 +39,18 @@ const clearTable = async (req, res) => {
 // VALIDATION //
 ////////////////
 
+function checkData(req, res, next) {
+  const { data } = req.body;
+  if (!data) {
+    return next({
+      status: 400,
+      message: "Request body is empty.",
+    });
+  }
+
+  next();
+}
+
 const tableExists = async (req, res, next) => {
   const table_id = Number(req.params.table_id);
   const table = await tablesService.read(table_id);
@@ -54,9 +66,38 @@ const tableExists = async (req, res, next) => {
   }
 };
 
+function checkTableName(req, res, next) {
+  const {
+    data: { table_name },
+  } = req.body;
+
+  if (!table_name) {
+    return next({
+      status: 400,
+      message: "A table name is required.",
+    });
+  }
+
+  if (table_name.replace(/\s+/g, "").length === 0) {
+    return next({
+      status: 400,
+      message: "Table name cannot be blank.",
+    });
+  }
+
+  if (table_name.length < 2) {
+    return next({
+      status: 400,
+      message: "Table name must be at least 2 characters long.",
+    });
+  }
+
+  next();
+}
+
 module.exports = {
   list: [asyncErrorBoundary(list)],
-  create: [asyncErrorBoundary(create)],
+  create: [checkData, checkTableName, asyncErrorBoundary(create)],
   read: [tableExists, asyncErrorBoundary(read)],
   seatTable: [tableExists, asyncErrorBoundary(seatTable)],
   clearTable: [tableExists, asyncErrorBoundary(clearTable)],
