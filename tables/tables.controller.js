@@ -95,9 +95,36 @@ function checkTableName(req, res, next) {
   next();
 }
 
+function checkTableCapacityPOST(req, res, next) {
+  const {
+    data: { capacity },
+  } = req.body;
+
+  if (!capacity || capacity < 1) {
+    return next({
+      status: 400,
+      message: "A capacity of at least 1 is required to create a table.",
+    });
+  }
+
+  if (typeof capacity !== "number") {
+    return next({
+      status: 400,
+      message: "Capacity must be a number.",
+    });
+  }
+
+  next();
+}
+
 module.exports = {
   list: [asyncErrorBoundary(list)],
-  create: [checkData, checkTableName, asyncErrorBoundary(create)],
+  create: [
+    checkData,
+    checkTableName,
+    checkTableCapacityPOST,
+    asyncErrorBoundary(create),
+  ],
   read: [tableExists, asyncErrorBoundary(read)],
   seatTable: [tableExists, asyncErrorBoundary(seatTable)],
   clearTable: [tableExists, asyncErrorBoundary(clearTable)],
