@@ -1,4 +1,5 @@
 const tablesService = require("./tables.service");
+const reservationService = require("../reservations/reservations.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 
 const create = async (req, res) => {
@@ -117,6 +118,38 @@ const checkTableCapacityPOST = (req, res, next) => {
   next();
 };
 
+const checkTableCapacityPUT = async (req, res, next) => {
+  const table = res.locals.table;
+  const {
+    data: { reservation_id },
+  } = req.body;
+
+  if (!reservation_id) {
+    return {
+      status: 400,
+      message: "reservation_id was not provided.",
+    };
+  }
+
+  const reservation = await reservationService.read(reservation_id);
+
+  if (!reservation) {
+    return next({
+      status: 400,
+      message: `Reservation ${reservation_id} could not be found.`,
+    });
+  }
+
+  if (reservation.people > table.capacity) {
+    return next({
+      status: 400,
+      message: "Table is not large enough for this party.",
+    });
+  }
+
+  next();
+};
+
 module.exports = {
   list: [asyncErrorBoundary(list)],
   create: [
@@ -125,7 +158,11 @@ module.exports = {
     checkTableCapacityPOST,
     asyncErrorBoundary(create),
   ],
-  read: [tableExists, asyncErrorBoundary(read)],
-  seatTable: [tableExists, asyncErrorBoundary(seatTable)],
-  clearTable: [tableExists, asyncErrorBoundary(clearTable)],
+  read: [asyncErrorBoundary(tableExists), asyncErrorBoundary(read)],
+  seatTable: [
+    asyncErrorBoundary(tableExists),
+    asyncErrorBoundary(checkTableCapacityPUT),
+    asyncErrorBoundary(seatTable),
+  ],
+  clearTable: [asyncErrorBoundary(tableExists), asyncErrorBoundary(clearTable)],
 };
