@@ -30,9 +30,9 @@ const seatTable = async (req, res) => {
 // clears the table from having a reservation_id
 
 const clearTable = async (req, res) => {
-  const table_id = req.params.table_id;
+  const table = res.locals.table;
   const { reservation_id } = req.body.data;
-  const data = await tablesService.clearTable(table_id, reservation_id);
+  const data = await tablesService.clearTable(table.table_id, reservation_id);
   res.status(200).json({ data });
 };
 
