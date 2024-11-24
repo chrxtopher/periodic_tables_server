@@ -39,7 +39,7 @@ const clearTable = async (req, res) => {
 // VALIDATION //
 ////////////////
 
-function checkData(req, res, next) {
+const checkData = (req, res, next) => {
   const { data } = req.body;
   if (!data) {
     return next({
@@ -49,7 +49,7 @@ function checkData(req, res, next) {
   }
 
   next();
-}
+};
 
 const tableExists = async (req, res, next) => {
   const table_id = Number(req.params.table_id);
@@ -66,7 +66,7 @@ const tableExists = async (req, res, next) => {
   }
 };
 
-function checkTableName(req, res, next) {
+const checkTableName = (req, res, next) => {
   const {
     data: { table_name },
   } = req.body;
@@ -93,9 +93,9 @@ function checkTableName(req, res, next) {
   }
 
   next();
-}
+};
 
-function checkTableCapacityPOST(req, res, next) {
+const checkTableCapacityPOST = (req, res, next) => {
   const {
     data: { capacity },
   } = req.body;
@@ -115,7 +115,7 @@ function checkTableCapacityPOST(req, res, next) {
   }
 
   next();
-}
+};
 
 module.exports = {
   list: [asyncErrorBoundary(list)],
