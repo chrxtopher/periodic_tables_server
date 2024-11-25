@@ -40,6 +40,14 @@ const listByDate = (reservation_date) => {
     .orderBy("reservation_time");
 };
 
+const listTimesForCurrentDay = (reservation_date) => {
+  return knex("reservations")
+    .select("reservation_time")
+    .where({ reservation_date })
+    .whereNot({ status: "complete" })
+    .andWhereNot({ status: "cancelled" });
+};
+
 const search = (last_name) => {
   return knex("reservations")
     .whereILike("last_name", `%${last_name}%`)
@@ -58,6 +66,7 @@ module.exports = {
   list,
   listByDate,
   listCompleteReservations,
+  listTimesForCurrentDay,
   create,
   read,
   update,
