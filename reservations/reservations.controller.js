@@ -172,10 +172,11 @@ const validateReservationDate = (req, res, next) => {
   next();
 };
 
-const validateReservationTime = (req, res, next) => {
+const validateReservationTime = async (req, res, next) => {
   // checks if reservation time is provided or blank, and between 10:30am - 9:30pm.
+  // checks if there is a reservation booked for that time already
   const {
-    data: { reservation_time },
+    data: { reservation_time, reservation_date },
   } = req.body;
 
   if (!reservation_time || reservation_time.replace(/\s+/g, "").length === 0) {
@@ -192,6 +193,17 @@ const validateReservationTime = (req, res, next) => {
         "requested time is outside hours of operation => 10:30 A.M. - 09:30 P.M.",
     });
   }
+
+  const alreadyBooked = await reservationsService.listByDate(reservation_date);
+
+  alreadyBooked.forEach((reservation) => {
+    if (reservation.reservation_time === reservation_time) {
+      return next({
+        status: 400,
+        message: "This time slot is already booked.",
+      });
+    }
+  });
 
   next();
 };
@@ -241,7 +253,7 @@ module.exports = {
   create: [
     validateReqDataExists,
     validateReservationDate,
-    validateReservationTime,
+    asyncErrorBoundary(validateReservationTime),
     validatePeople,
     validateName,
     validateReservationStatusPOST,
@@ -252,7 +264,7 @@ module.exports = {
     asyncErrorBoundary(reservationExists),
     validateReqDataExists,
     validateReservationDate,
-    validateReservationTime,
+    asyncErrorBoundary(validateReservationTime),
     validatePeople,
     validateName,
     validateReservationStatusPUT,
