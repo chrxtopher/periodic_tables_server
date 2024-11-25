@@ -194,10 +194,12 @@ const validateReservationTime = async (req, res, next) => {
     });
   }
 
-  const alreadyBooked = await reservationsService.listByDate(reservation_date);
+  const timesForToday = await reservationsService.listTimesForCurrentDay(
+    reservation_date
+  );
 
-  alreadyBooked.forEach((reservation) => {
-    if (reservation.reservation_time === reservation_time) {
+  timesForToday.forEach((time) => {
+    if (time.reservation_time == `${reservation_time}:00`) {
       return next({
         status: 400,
         message: "This time slot is already booked.",
