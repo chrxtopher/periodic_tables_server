@@ -36,6 +36,12 @@ const clearTable = async (req, res) => {
   res.status(200).json({ data });
 };
 
+const deleteTable = async (req, res) => {
+  const table = res.locals.table;
+  const data = await tablesService.deleteTable(table.table_id);
+  res.status(200).json({ data });
+};
+
 /////////////////
 // VALIDATION //
 ////////////////
@@ -165,4 +171,5 @@ module.exports = {
     asyncErrorBoundary(seatTable),
   ],
   clearTable: [asyncErrorBoundary(tableExists), asyncErrorBoundary(clearTable)],
+  delete: [asyncErrorBoundary(tableExists), asyncErrorBoundary(deleteTable)],
 };
