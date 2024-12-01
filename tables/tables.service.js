@@ -40,10 +40,15 @@ const list = () => {
   return knex("tables").select("*").orderBy("table_name");
 };
 
+const deleteTable = (table_id) => {
+  return knex("tables").where({ table_id }).del();
+};
+
 module.exports = {
   create,
   read,
   seatTable,
   clearTable,
   list,
+  deleteTable,
 };
