@@ -156,6 +156,17 @@ const checkTableCapacityPUT = async (req, res, next) => {
   next();
 };
 
+const validateTableVacancy = () => {
+  const table = res.locals.table;
+
+  if (table.reservation) {
+    return next({
+      status: 400,
+      message: "This table is currently occupied.",
+    });
+  }
+};
+
 module.exports = {
   list: [asyncErrorBoundary(list)],
   create: [
@@ -167,9 +178,14 @@ module.exports = {
   read: [asyncErrorBoundary(tableExists), asyncErrorBoundary(read)],
   seatTable: [
     asyncErrorBoundary(tableExists),
+    validateTableVacancy,
     asyncErrorBoundary(checkTableCapacityPUT),
     asyncErrorBoundary(seatTable),
   ],
   clearTable: [asyncErrorBoundary(tableExists), asyncErrorBoundary(clearTable)],
-  delete: [asyncErrorBoundary(tableExists), asyncErrorBoundary(deleteTable)],
+  delete: [
+    asyncErrorBoundary(tableExists),
+    validateTableVacancy,
+    asyncErrorBoundary(deleteTable),
+  ],
 };
