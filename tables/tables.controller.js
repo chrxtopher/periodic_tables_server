@@ -159,7 +159,7 @@ const validateTableCapacityPUT = async (req, res, next) => {
 const validateTableVacancy = (req, res, next) => {
   const table = res.locals.table;
 
-  if (table.reservation) {
+  if (table.reservation_id) {
     return next({
       status: 400,
       message: "This table is currently occupied.",
