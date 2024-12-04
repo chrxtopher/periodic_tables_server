@@ -156,7 +156,7 @@ const validateTableCapacityPUT = async (req, res, next) => {
   next();
 };
 
-const validateTableVacancy = () => {
+const validateTableVacancy = (req, res, next) => {
   const table = res.locals.table;
 
   if (table.reservation) {
@@ -165,12 +165,14 @@ const validateTableVacancy = () => {
       message: "This table is currently occupied.",
     });
   }
+
+  next();
 };
 
 module.exports = {
   list: [asyncErrorBoundary(list)],
   create: [
-    validateData,
+    validateTableData,
     validateTableName,
     validateTableCapacityPOST,
     asyncErrorBoundary(create),
