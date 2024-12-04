@@ -46,7 +46,7 @@ const deleteTable = async (req, res) => {
 // VALIDATION //
 ////////////////
 
-const checkData = (req, res, next) => {
+const validateTableData = (req, res, next) => {
   const { data } = req.body;
   if (!data) {
     return next({
@@ -73,7 +73,7 @@ const tableExists = async (req, res, next) => {
   }
 };
 
-const checkTableName = (req, res, next) => {
+const validateTableName = (req, res, next) => {
   const {
     data: { table_name },
   } = req.body;
@@ -102,7 +102,7 @@ const checkTableName = (req, res, next) => {
   next();
 };
 
-const checkTableCapacityPOST = (req, res, next) => {
+const validateTableCapacityPOST = (req, res, next) => {
   const {
     data: { capacity },
   } = req.body;
@@ -124,7 +124,7 @@ const checkTableCapacityPOST = (req, res, next) => {
   next();
 };
 
-const checkTableCapacityPUT = async (req, res, next) => {
+const validateTableCapacityPUT = async (req, res, next) => {
   const table = res.locals.table;
   const {
     data: { reservation_id },
@@ -170,16 +170,16 @@ const validateTableVacancy = () => {
 module.exports = {
   list: [asyncErrorBoundary(list)],
   create: [
-    checkData,
-    checkTableName,
-    checkTableCapacityPOST,
+    validateData,
+    validateTableName,
+    validateTableCapacityPOST,
     asyncErrorBoundary(create),
   ],
   read: [asyncErrorBoundary(tableExists), asyncErrorBoundary(read)],
   seatTable: [
     asyncErrorBoundary(tableExists),
     validateTableVacancy,
-    asyncErrorBoundary(checkTableCapacityPUT),
+    asyncErrorBoundary(validateTableCapacityPUT),
     asyncErrorBoundary(seatTable),
   ],
   clearTable: [asyncErrorBoundary(tableExists), asyncErrorBoundary(clearTable)],
